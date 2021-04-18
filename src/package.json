@@ -1,8 +1,0 @@
-{
-  "name": "responsive-view-handler",
-  "version": "1.0.0",
-  "description": "Responsive view change handler class for Javascript",
-  "main": "src/responsive.js",
-  "author": "Attila Kiss",
-  "license": "MIT"
-}

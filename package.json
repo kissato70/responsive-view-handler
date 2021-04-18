@@ -1,0 +1,25 @@
+{
+  "name": "responsive-view-handler",
+  "version": "1.0.0",
+  "description": "Responsive view change handler class for Javascript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kissato70/responsive-view-handler.git"
+  },
+  "homepage": "https://github.com/kissato70/responsive-view-handler",
+  "keywords": ["responsive","javascript","react", "mobile view"],
+  "funding": {
+    "type" : "individual",
+    "url" : "https://bit.ly/kissato70_paypal_donate"
+  },
+  "main": "build/responsive.js",
+  "files": ["dist/"],
+  "author": "Attila Kiss",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && yarn uglifyjs ./dist/responsive.js --compress --mangle -o ./dist/responsive.js"
+  },
+  "devDependencies": {
+    "uglify-js": "^3.13.4"
+  }
+}
