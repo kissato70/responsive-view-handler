@@ -7,13 +7,22 @@
     "url": "https://github.com/kissato70/responsive-view-handler.git"
   },
   "homepage": "https://github.com/kissato70/responsive-view-handler",
-  "keywords": ["responsive","javascript","react", "mobile view"],
+  "keywords": [
+    "responsive",
+    "javascript",
+    "react",
+    "mobile view",
+    "resize",
+    "typescript"
+  ],
   "funding": {
-    "type" : "individual",
-    "url" : "https://bit.ly/kissato70_paypal_donate"
+    "type": "individual",
+    "url": "https://bit.ly/kissato70_paypal_donate"
   },
-  "main": "build/responsive.js",
-  "files": ["dist/"],
+  "main": "dist/responsive.js",
+  "files": [
+    "dist/"
+  ],
   "author": "Attila Kiss",
   "license": "MIT",
   "scripts": {
