@@ -1,6 +1,6 @@
 # Responsive view change trigger class for Javascript
 In certain cases you may want to have more control than just use the CSS @media queries. This class makes it possible to have a callback function fired in case of change in the view (resize or orientation change).  
-The callback function will be called ONLY if any of the two output parameters has changed. 
+The callback function will be called ONLY if any of the two components of the output parameter object has changed. 
 
 Input (constructor) parameters:
 |parameter | values |Description|
@@ -9,9 +9,16 @@ Input (constructor) parameters:
 |`mobileViewHandler`| function | A callback function for the event trigger. |
   
 <br/>  
-The two return parameters are:  
+The return object is:  
 
-|parameter | values |Description|
+```javascript
+type mobileStatusType = {
+  mobileView    :  boolean | null,
+  portraitView  :  boolean | null
+}
+```
+
+|components | values |Description|
 |--------- | :------:| --------| 
 | `mobileView`| true\|false | Sends TRUE if the screen width is smaller than `minWidth`.|  
 | `portraitView` | true\|false | TRUE = portrait, FALSE = landscape arrangement.|  
@@ -19,24 +26,35 @@ The two return parameters are:
 
 
 
-Use the class in VanillaJs:
+Use the class in __VanillaJs__:
 ```javascript
 import ResponsiveViewTrigger from 'responsive-view-trigger';
 
 const minWidth = 1024;
 new ResponsiveViewTrigger(minWidth, mobileViewHandler);
 
-function mobileViewHandler(mobileView: boolean, portraitView: boolean){
+function mobileViewHandler(mobileStatus){
   // add or remove CSS class names and do the other things...
 }
 ```
+the same code, __VanillaJS with Typescript__ :
+```javascript
+import ResponsiveViewTrigger, {mobileStatusType} from 'responsive-view-trigger';
 
-In case of React : 
+const minWidth : number = 1024;
+new ResponsiveViewTrigger(minWidth, mobileViewHandler);
+
+function mobileViewHandler(mobileStatus : mobileStatusType){
+  // add or remove CSS class names and do the other things...
+}
+```
+<br/>  
+
+Class example using __React__ : 
 ```javascript
 import ResponsiveViewTrigger from 'responsive-view-trigger';
 
 export default class myClassComponent extends Component{
-  
   construct (props) {
     super(props);
     ...
@@ -59,16 +77,49 @@ export default class myClassComponent extends Component{
   }
 };
 ```
-Typescript type import option :
+the same code, __React with Typescript__ :
 ```javascript
-import {mobileStatus} from 'responsive-view-trigger';
+import ResponsiveViewTrigger, {mobileStatusType} from 'responsive-view-trigger';
 
-myState = {
+type myProps = { ... }
+type myState = {
   ...
-} & mobileStatus
+  mobileView: mobileStatus
+}
+
+export default class myClassComponent extends Component<myProps,myState>{
+  construct (props : myProps) {
+    super(props);
+    ...
+    this.state = {
+      ...
+      mobileView: {mobileView: null, portraitView:null}
+    }
+    this.mobileViewHandler = this.mobileViewHandler.bind(this);
+  }
+
+  componentDidMount() {
+    const minWidth : number = 1024;
+    new ResponsiveViewTrigger(minWidth, this.mobileViewHandler);
+  }
+
+  mobileViewHandler = ( newMobileState : mobileStatusType)=> {
+    this.setState({
+      mobileView : newMobileState
+    })
+    // change other states, styles etc. depending on the incoming status, etc.
+  }
+
+  render() {
+    return (
+      ...
+    )
+  }
+};
 ```
-## Personal note:
-Consider to use @media queries, it gives you more possibilities.
+
+## ___Personal note___:
+Consider to use plain CSS @media queries, as it gives you more possibilities.
 
 
 <br><br>
