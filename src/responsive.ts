@@ -1,13 +1,13 @@
-type mobileStatus = {
+type mobileStatusType = {
   mobileView: boolean | null,
   portraitView: boolean | null
 }
-export type { mobileStatus };
+export type { mobileStatusType };
 
 
 export default class ResponsiveViewTrigger
 {
-  mobileStatus: mobileStatus;
+  mobileStatus: mobileStatusType;
   responsiveMinWidth: number;
   callbackFunction: Function;
   
@@ -24,23 +24,23 @@ export default class ResponsiveViewTrigger
 
   Response = () =>
   {
-    const mView: boolean = this.responsiveMinWidth > window.innerWidth;
-    const portraitMode: boolean = window.innerWidth <= window.innerHeight
+    const mobileView: boolean = this.responsiveMinWidth > window.innerWidth;
+    const portraitView: boolean = window.innerWidth <= window.innerHeight
     let hasChange = false;
-    if ( mView !== this.mobileStatus.mobileView )
+    if ( mobileView !== this.mobileStatus.mobileView )
     {
-      this.mobileStatus.mobileView = mView;
+      this.mobileStatus.mobileView = mobileView;
       hasChange = true;
     }
-    if (portraitMode !== this.mobileStatus.portraitView)
+    if (portraitView !== this.mobileStatus.portraitView)
     {
-      this.mobileStatus.portraitView = portraitMode;
+      this.mobileStatus.portraitView = portraitView;
       hasChange = true;
     }
     if (hasChange)
-      {
-        this.callbackFunction(mView,portraitMode);
-      }
+    {
+      this.callbackFunction(this.mobileStatus);
+    }
   }
 
 }
