@@ -20,7 +20,8 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "removeComments": true
   },
   "include": [
     "./src"
