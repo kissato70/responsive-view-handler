@@ -39,7 +39,11 @@ export default class ResponsiveViewTrigger
     }
     if (hasChange)
     {
-      this.callbackFunction(this.mobileStatus);
+      let newStatus: mobileStatusType = {
+        mobileView: this.mobileStatus.mobileView,
+        portraitView: this.mobileStatus.portraitView
+      }
+      this.callbackFunction(newStatus);
     }
   }
 
