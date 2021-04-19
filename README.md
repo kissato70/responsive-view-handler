@@ -21,10 +21,10 @@ The two return parameters are:
 
 Use the class in VanillaJs:
 ```javascript
-import ResponsiveViewHandler from 'responsive-view-handler';
+import ResponsiveViewTrigger from 'responsive-view-trigger';
 
 const minWidth = 1024;
-new ResponsiveViewHandler(minWidth, mobileViewHandler);
+new ResponsiveViewTrigger(minWidth, mobileViewHandler);
 
 function mobileViewHandler(mobileView: boolean, portraitView: boolean){
   // add or remove CSS class names and do the other things...
@@ -33,7 +33,7 @@ function mobileViewHandler(mobileView: boolean, portraitView: boolean){
 
 In case of React : 
 ```javascript
-import ResponsiveViewHandler from 'responsive-view-handler';
+import ResponsiveViewTrigger from 'responsive-view-trigger';
 
 export default class myClassComponent extends Component{
   
@@ -45,7 +45,7 @@ export default class myClassComponent extends Component{
 
   componentDidMount() {
     const minWidth = 1024;
-    new ResponsiveViewHandler(minWidth, this.mobileViewHandler);
+    new ResponsiveViewTrigger(minWidth, this.mobileViewHandler);
   }
 
   mobileViewHandler = (mobileView: boolean, portraitView: boolean)=> {
@@ -58,6 +58,14 @@ export default class myClassComponent extends Component{
     )
   }
 };
+```
+Typescript type import option :
+```javascript
+import {mobileStatus} from 'responsive-view-trigger';
+
+myState = {
+  ...
+} & mobileStatus
 ```
 ## Personal note:
 Consider to use @media queries, it gives you more possibilities.

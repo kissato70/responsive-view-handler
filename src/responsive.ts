@@ -5,7 +5,7 @@ type mobileStatus = {
 export type { mobileStatus };
 
 
-export default class ResponsiveViewHandler
+export default class ResponsiveViewTrigger
 {
   mobileStatus: mobileStatus;
   responsiveMinWidth: number;

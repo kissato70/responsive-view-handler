@@ -26,7 +26,7 @@
   "author": "Attila Kiss",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && yarn uglifyjs ./dist/responsive.js --compress --mangle -o ./dist/responsive.js"
+    "dist": "tsc && yarn uglifyjs ./dist/responsive.js --compress --mangle -o ./dist/responsive.js"
   },
   "devDependencies": {
     "uglify-js": "^3.13.4"
