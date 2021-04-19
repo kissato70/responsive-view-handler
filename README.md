@@ -1,14 +1,16 @@
-# Responsive view change handler class for Javascript
+# Responsive view change trigger class for Javascript
 In certain cases you may want to have more control than just use the CSS @media queries. This class makes it possible to have a callback function fired in case of change in the view (resize or orientation change).  
-The callback function will be called ONLY if the orientation has changed or the screen size has crossed the given width parameter. 
+The callback function will be called ONLY if any of the two output parameters has changed. 
 
 Input (constructor) parameters:
 |parameter | values |Description|
 |--------- | :------:| --------|
 |`minWidth`| pixels | The screen width, where the event fires. |
-|`mobileViewHandler`| function | A callback function for the event of resize trigger. |
-
+|`mobileViewHandler`| function | A callback function for the event trigger. |
+  
+<br/>  
 The two return parameters are:  
+
 |parameter | values |Description|
 |--------- | :------:| --------| 
 | `mobileView`| true\|false | Sends TRUE if the screen width is smaller than `minWidth`.|  
@@ -57,8 +59,8 @@ export default class myClassComponent extends Component{
   }
 };
 ```
-## Please note:
-For normal usage it is always possible to use @media queries, it gives you more possibilities.
+## Personal note:
+Consider to use @media queries, it gives you more possibilities.
 
 
 <br><br>
@@ -70,6 +72,9 @@ For normal usage it is always possible to use @media queries, it gives you more 
 
 <br>  
 
+## Future version enhancement plans:
+- Multi-step triggering (gives you several steps of screen resize events)
+- Screen turning triggering (fires an event at a certain angle)
 ## Support the project >>> [Donation](https://bit.ly/kissato70_paypal_donate)  
 _Please support the further releases, if you like this class! **Thank you!**_  
 <br/>

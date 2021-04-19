@@ -1,12 +1,12 @@
 {
-  "name": "responsive-view-handler",
-  "version": "1.0.0",
+  "name": "responsive-view-trigger",
+  "version": "0.0.1",
   "description": "Responsive view change handler class for Javascript",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kissato70/responsive-view-handler.git"
+    "url": "https://github.com/kissato70/responsive-view-trigger.git"
   },
-  "homepage": "https://github.com/kissato70/responsive-view-handler",
+  "homepage": "https://github.com/kissato70/responsive-view-trigger",
   "keywords": [
     "responsive",
     "javascript",
