@@ -84,7 +84,7 @@ import ResponsiveViewTrigger, {mobileStatusType} from 'responsive-view-trigger';
 type myProps = { ... }
 type myState = {
   ...
-  mobileView: mobileStatus
+  mobileState: mobileStatusType
 }
 
 export default class myClassComponent extends Component<myProps,myState>{
@@ -93,7 +93,7 @@ export default class myClassComponent extends Component<myProps,myState>{
     ...
     this.state = {
       ...
-      mobileView: {mobileView: null, portraitView:null}
+      mobileState: {mobileView: null, portraitView:null}
     }
     this.mobileViewHandler = this.mobileViewHandler.bind(this);
   }
@@ -105,7 +105,7 @@ export default class myClassComponent extends Component<myProps,myState>{
 
   mobileViewHandler = ( newMobileState : mobileStatusType)=> {
     this.setState({
-      mobileView : newMobileState
+      mobileState : newMobileState
     })
     // change other states, styles etc. depending on the incoming status, etc.
   }
@@ -118,7 +118,7 @@ export default class myClassComponent extends Component<myProps,myState>{
 };
 ```
 
-## ___Personal note___:
+## ___Personal note:___
 Consider to use plain CSS @media queries, as it gives you more possibilities.
 
 
@@ -127,7 +127,7 @@ Consider to use plain CSS @media queries, as it gives you more possibilities.
 
  > Licence:  MIT
 
-> Report issues [here](https://github.com/kissato70/dist-upload-s3/issues).
+> Report issues [here](https://github.com/kissato70/responsive-view-trigger/issues).
 
 <br>  
 
