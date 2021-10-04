@@ -1,11 +1,13 @@
 # Responsive view change trigger class for Javascript
 In certain cases you may want to have more control than just use the CSS @media queries. This class makes it possible to have a callback function fired in case of change in the view (resize or orientation change).  
-The callback function will be called ONLY if any of the two components of the output parameter object has changed. 
+The callback function will be called ONLY if any of the two components of the output parameter object has changed.  
+For `React` consider using the [@kekalma/responsive](https://www.npmjs.com/package/@kekalma/responsive) package.
 
 Input (constructor) parameters:
 |parameter | values |Description|
 |--------- | :------:| --------|
 |`minWidth`| pixels | The screen width, where the event fires. |
+|`minHeight`| pixels | The screen height, where the event fires. |
 |`mobileViewHandler`| function | A callback function for the event trigger. |
   
 <br/>  
@@ -14,13 +16,15 @@ The return object is:
 ```javascript
 type mobileStatusType = {
   mobileView    :  boolean | null,
-  portraitView  :  boolean | null
+  portraitView  :  boolean | null,
+  width         :  pixels  | null,
+  height        :  pixels  | null
 }
 ```
 
 |components | values |Description|
 |--------- | :------:| --------| 
-| `mobileView`| true\|false | Sends TRUE if the screen width is smaller than `minWidth`.|  
+| `mobileView`| true\|false | Sends TRUE if the screen width is smaller than `minWidth` and/or the screen height is smaller than `minHeight`.|  
 | `portraitView` | true\|false | TRUE = portrait, FALSE = landscape arrangement.|  
 <br>  
 
@@ -31,7 +35,7 @@ Use the class in __VanillaJs__:
 import ResponsiveViewTrigger from 'responsive-view-trigger';
 
 const minWidth = 1024;
-new ResponsiveViewTrigger(minWidth, mobileViewHandler);
+new ResponsiveViewTrigger(minWidth, , mobileViewHandler);
 
 function mobileViewHandler(mobileStatus){
   // add or remove CSS class names and do the other things...
@@ -42,7 +46,7 @@ the same code, __VanillaJS with Typescript__ :
 import ResponsiveViewTrigger, {mobileStatusType} from 'responsive-view-trigger';
 
 const minWidth : number = 1024;
-new ResponsiveViewTrigger(minWidth, mobileViewHandler);
+new ResponsiveViewTrigger(minWidth, , mobileViewHandler);
 
 function mobileViewHandler(mobileStatus : mobileStatusType){
   // add or remove CSS class names and do the other things...
@@ -63,7 +67,7 @@ export default class myClassComponent extends Component{
 
   componentDidMount() {
     const minWidth = 1024;
-    new ResponsiveViewTrigger(minWidth, this.mobileViewHandler);
+    new ResponsiveViewTrigger(minWidth, , this.mobileViewHandler);
   }
 
   mobileViewHandler = (mobileView: boolean, portraitView: boolean)=> {
@@ -100,7 +104,7 @@ export default class myClassComponent extends Component<myProps,myState>{
 
   componentDidMount() {
     const minWidth : number = 1024;
-    new ResponsiveViewTrigger(minWidth, this.mobileViewHandler);
+    new ResponsiveViewTrigger(minWidth, , this.mobileViewHandler);
   }
 
   mobileViewHandler = ( newMobileState : mobileStatusType)=> {
@@ -121,6 +125,16 @@ export default class myClassComponent extends Component<myProps,myState>{
 ## ___Personal note:___
 Consider to use plain CSS @media queries, as it gives you more possibilities.
 
+<br>
+
+## __`Changelog:`__
+
+|Version|What's new, description|
+|:---:|:---|
+|2.0.0|`minHeight` property.<br>Returning `width` and `height` of the screen.|
+
+<br>
+
 
 <br><br>
 >Written by: __Attila Kiss__, [e-LET Kft](https://e-let.hu), Hungary  ( GitHub: [kissato70](https://github.com/kissato70) )
@@ -132,7 +146,6 @@ Consider to use plain CSS @media queries, as it gives you more possibilities.
 <br>  
 
 ## Future version enhancement plans:
-- Multi-step triggering (gives you several steps of screen resize events)
 - Screen turning triggering (fires an event at a certain angle)
 ## Support the project >>> [Donation](https://bit.ly/kissato70_paypal_donate)  
 _Please support the further releases, if you like this class! **Thank you!**_  

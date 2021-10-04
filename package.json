@@ -1,6 +1,6 @@
 {
   "name": "responsive-view-trigger",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Responsive view change handler class for Javascript",
   "repository": {
     "type": "git",
@@ -10,7 +10,6 @@
   "keywords": [
     "responsive",
     "javascript",
-    "react",
     "mobile view",
     "resize",
     "typescript"

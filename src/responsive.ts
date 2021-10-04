@@ -1,6 +1,8 @@
 type mobileStatusType = {
   mobileView: boolean | null,
-  portraitView: boolean | null
+  portraitView: boolean | null,
+  width: number | null,
+  height: number | null
 }
 export type { mobileStatusType };
 
@@ -9,12 +11,14 @@ export default class ResponsiveViewTrigger
 {
   mobileStatus: mobileStatusType;
   responsiveMinWidth: number;
+  responsiveMinHeight: number;
   callbackFunction: Function;
   
-  constructor(minWidth: number, onMobileViewChange: Function)
+  constructor(minWidth: number = 0, minHeight: number = 0, onMobileViewChange: Function)
   {
-    this.mobileStatus = { mobileView: null, portraitView: null };
+    this.mobileStatus = { mobileView: null, portraitView: null, width: null, height: null };
     this.responsiveMinWidth = minWidth;
+    this.responsiveMinHeight = minHeight
     this.callbackFunction = onMobileViewChange;
     window.addEventListener("resize", this.Response);
     window.addEventListener("orientationchange", this.Response);
@@ -24,8 +28,10 @@ export default class ResponsiveViewTrigger
 
   Response = () =>
   {
-    const mobileView: boolean = this.responsiveMinWidth > window.innerWidth;
-    const portraitView: boolean = window.innerWidth <= window.innerHeight
+    const width = window.innerWidth
+    const height = window.innerHeight
+    const mobileView: boolean = this.responsiveMinWidth > width || this.responsiveMinHeight > height;
+    const portraitView: boolean = width <= height
     let hasChange = false;
     if ( mobileView !== this.mobileStatus.mobileView )
     {
@@ -41,7 +47,9 @@ export default class ResponsiveViewTrigger
     {
       let newStatus: mobileStatusType = {
         mobileView: this.mobileStatus.mobileView,
-        portraitView: this.mobileStatus.portraitView
+        portraitView: this.mobileStatus.portraitView,
+        width,
+        height
       }
       this.callbackFunction(newStatus);
     }
