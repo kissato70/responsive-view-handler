@@ -131,7 +131,7 @@ Consider to use plain CSS @media queries, as it gives you more possibilities.
 
 |Version|What's new, description|
 |:---:|:---|
-|2.0.0|`minHeight` property.<br>Returning `width` and `height` of the screen.|
+|2.0.1|`minHeight` property.<br>Returning `width` and `height` of the screen.|
 
 <br>
 

@@ -1,6 +1,6 @@
 {
   "name": "responsive-view-trigger",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "Responsive view change handler class for Javascript",
   "repository": {
     "type": "git",
@@ -25,10 +25,14 @@
   "author": "Attila Kiss",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && yarn uglifyjs ./dist/responsive.js --compress --mangle -o ./dist/responsive.js",
-    "publish": "yarn build && npm publish --access public"
+    "dev": "tsc --watch true",
+    "serve": "cd example && PORT=7709 rollup --config rollup.config.dev.js -w",
+    "dist": "tsc && yarn uglifyjs ./build/responsive.js --compress --mangle -o ./build/responsive.js"
   },
   "devDependencies": {
     "uglify-js": "^3.13.4"
-  }
+  },
+  "workspaces": [
+    "example"
+  ]
 }

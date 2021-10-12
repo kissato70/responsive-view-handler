@@ -9,10 +9,10 @@ export type { mobileStatusType };
 
 export default class ResponsiveViewTrigger
 {
-  mobileStatus: mobileStatusType;
+  readonly mobileStatus: mobileStatusType;
   responsiveMinWidth: number;
   responsiveMinHeight: number;
-  callbackFunction: Function;
+  private callbackFunction: Function;
   
   constructor(minWidth: number = 0, minHeight: number = 0, onMobileViewChange: Function)
   {
@@ -26,7 +26,7 @@ export default class ResponsiveViewTrigger
     this.Response();
   }
 
-  Response = () =>
+  private Response = () =>
   {
     const width = window.innerWidth
     const height = window.innerHeight
@@ -53,6 +53,12 @@ export default class ResponsiveViewTrigger
       }
       this.callbackFunction(newStatus);
     }
+  }
+
+  CleanUp = () =>
+  {
+    window.removeEventListener("resize", this.Response)
+    window.removeEventListener("orientationchange", this.Response)
   }
 
 }
