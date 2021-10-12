@@ -18,18 +18,21 @@
     "type": "individual",
     "url": "https://bit.ly/kissato70_paypal_donate"
   },
-  "main": "dist/responsive.js",
+  "main": "build/responsive.js",
   "files": [
-    "dist/"
+    "build/"
   ],
   "author": "Attila Kiss",
   "license": "MIT",
   "scripts": {
-    "dev": "tsc --watch true",
+    "dev": "rollup --config rollup.config.dev.js -w",
+    "dist": "rollup --config rollup.config.dist.js",
     "serve": "cd example && PORT=7709 rollup --config rollup.config.dev.js -w",
-    "dist": "tsc && yarn uglifyjs ./build/responsive.js --compress --mangle -o ./build/responsive.js"
+    "___dist": "tsc && yarn uglifyjs ./build/responsive.js --compress --mangle -o ./build/responsive.js"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@rollup/plugin-babel": "^5.3.0",
     "uglify-js": "^3.13.4"
   },
   "workspaces": [

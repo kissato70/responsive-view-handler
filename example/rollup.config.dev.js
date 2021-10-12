@@ -2,9 +2,7 @@ import cleaner from "rollup-plugin-cleaner";
 import copy from 'rollup-plugin-copy'
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import node_resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
-import replace from "@rollup/plugin-replace";
 import livereload from 'rollup-plugin-livereload';
 import serve from 'rollup-plugin-serve';
 
@@ -45,7 +43,7 @@ export default {
     }),
     serve({
       port: 7709,
-      contentBase: 'build'
+      contentBase: './build'
     })
   ],
 };
